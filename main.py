@@ -11,7 +11,8 @@ def launch_training(model_name, **kwargs):
     # Launch training
     train.train(model_name, **d_params)
 
-if __name__ == "__main__":
+if __name__ == "__main__": #this checks if the script is being run directly or if it is being imported; 
+                            #if run directly, it will run the following code
 
     parser = argparse.ArgumentParser(description='Experiments for optimizer')
     parser.add_argument('list_experiments', type=str, nargs='+',
@@ -32,6 +33,8 @@ if __name__ == "__main__":
                         help='The connection between agents if sparse or not, default: False i.e. fully connected')
     args = parser.parse_args()
 
+    #this chekcs of "figures" and "log" directories exist within the current directory
+    #if they don't exist then it makes them
     list_dir = ["figures", "log"]
     for d in list_dir:
         if not os.path.exists(d):
