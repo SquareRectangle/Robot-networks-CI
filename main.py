@@ -1,8 +1,9 @@
-import os
+import os # module that lets you interact with the operating system
+        # similar to how you would on the command line
 os.environ['TF_CPP_MIN_LOG_LEVEL']='3'
 os.environ['KERAS_BACKEND']="tensorflow"
 import train
-import argparse
+import argparse # module to make working with command line arguments easier
 from joblib import Parallel, delayed
 import multiprocessing
 
