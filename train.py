@@ -13,7 +13,7 @@ K.set_session(sess)
 K.set_image_data_format('channels_last')
 from keras.utils import np_utils, generic_utils
 from keras.utils.generic_utils import CustomObjectScope
-from keras.datasets import cifar10, cifar100, mnist
+from keras.datasets import cifar10, cifar100, mnist # import common datasets
 from keras.optimizers import Adam, SGD
 from CDSGD import CDSGD, model_compilers_cdsgd, update_parameters_cdsgd
 from CDMSGD import CDMSGD, model_compilers_cdmsgd, update_parameters_cdmsgd
@@ -71,10 +71,17 @@ def train(model_name, **kwargs):
 
     if dataset == "cifar100":
         (X_train, y_train), (X_test, y_test) = cifar100.load_data()
+    # cifar10 and cifar100 are image datasets commonly used for machine learning
+    # more detail here: https://www.cs.toronto.edu/~kriz/cifar.html
+    # variety of things in images
+    # -- vehicles and animals in cifar10,
+    # -- vehicles, structures, [more] animals, plants in cifar100
     if dataset == "mnist":
         (X_train, y_train), (X_test, y_test) = mnist.load_data()
         X_train = X_train.reshape((X_train.shape[0], 1, 28, 28))
         X_test = X_test.reshape((X_test.shape[0], 1, 28, 28))
+    # MNIST is a dataset containing images of hand-written numbers
+    # more info: https://www.geeksforgeeks.org/machine-learning/mnist-dataset/
     if dataset !="cifar10_non_iid":
          X_train = X_train.astype('float32')
          X_test = X_test.astype('float32')
